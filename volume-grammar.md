@@ -1,10 +1,24 @@
 <!-- .slide: class="titleslide" -->
 
 # a grammar of volumetric analysis
+
 <div style="height: 6.0em;"></div>
+
 ## Matthew Turk & Sam Walkow
 ## iSchool Research Showcase
-<p style="text-align: right;">`mjturk@illinois.edu`</p> 
+
+<p style="text-align: right;" data-markdown="true">`mjturk@illinois.edu`</p> 
+
+---
+
+<!-- .slide: data-background-image="https://upload.wikimedia.org/wikipedia/commons/b/bd/Kelvin_Helmholz_wave_clouds.jpg" 
+             data-background-size="cover" data-background-repeat="none" class="full" -->
+
+<p class="mediumtext centered"><a href="https://commons.wikimedia.org/wiki/File:Kelvin_Helmholz_wave_clouds.jpg">Brocken Inaglory [CC BY-SA 4.0], via Wikimedia Commons</a></p>
+
+---
+
+
 
 ---
 
@@ -14,3 +28,37 @@
 
 <div class="fig-container" data-file="figures/volume_layout.html" data-preload data-style="height: 768px;">
 </div>
+
+---
+
+* Selection
+* Transformation
+* Registration
+* Reduction
+
+---
+
+# Selection
+
+---
+
+# Transformation
+
+ * Neighbor calculation
+ * Particle neighbor calculation
+ * Path analysis
+
+---
+
+# Registration
+
+---
+
+# Reduction
+
+ * Projection
+ * Ray-casting
+
+---
+
+# 
