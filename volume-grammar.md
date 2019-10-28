@@ -11,6 +11,11 @@
 
 ---
 
+<!-- .slide: data-background-image="images/clouds.jpg" 
+             data-background-size="cover" data-background-repeat="none" -->
+
+---
+
 <!-- .slide: data-background-image="https://upload.wikimedia.org/wikipedia/commons/b/bd/Kelvin_Helmholz_wave_clouds.jpg" 
              data-background-size="cover" data-background-repeat="none" class="full" -->
 
@@ -27,6 +32,11 @@
 <p class="fragment step-fade-in-then-out" data-fragment-index="3">Spatial</p>
 
 <div class="fig-container" data-file="figures/volume_layout.html" data-preload data-style="height: 768px;">
+</div>
+
+---
+
+<div class="fig-container" data-file="figures/cosmology.html" data-preload data-style="height: 767px;">
 </div>
 
 ---

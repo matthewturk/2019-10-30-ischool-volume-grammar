@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flubber/0.4.2/flubber.min.js"></script>
+      <script src="https://unpkg.com/d3-rect"></script>
+      <script src="volgrammar-functions.js"></script>
+  </head>
+  <body>
+    <div id="vis-volume-layout"></div>
+    
+    <script type="text/javascript">
+
+        const svg = d3
+                .select("#vis-volume-layout")
+                .append("svg")
+                .attr("viewBox", [0, 0, 1024, 768]);
+
+        // set up a promise
+        var loadData = d3.json("output_00080_info.json");
+        var cellColor = d3.scaleSequentialLog(d3.interpolateViridis).domain([2e-31, 2.2e-28]);
+
+        var imageXsize = d3.scaleLinear().domain([0.0, 1.0]).range([0, 500]);
+        var imageYsize = d3.scaleLinear().domain([0.0, 1.0]).range([0, 500]);
+        var imageX = d3.scaleLinear().domain([0.0, 1.0]).range([512 + 6, 1024 - 6]);
+        var imageY = d3.scaleLinear().domain([0.0, 1.0]).range([0, 500]);
+
+        const Nrow = 125;
+
+        function drawDisk(data) {
+            svg.selectAll("rect")
+                .data(data.projection)
+                .enter()
+                .append("rect")
+                .attr("x", (d, flatIndex) => 4 * (flatIndex % Nrow) + 6)
+                .attr("y", (d, flatIndex) => (32 + Math.floor(flatIndex / Nrow) * 4))
+                .attr("height", 4)
+                .attr("width", 4)
+                .style("stroke", "none")
+                .style("fill", d => cellColor(d.density));
+        }
+
+        function transitionDiskToImage(data) { 
+            svg.selectAll("rect")
+                .data(data.projection)
+                .transition()
+                .delay((d, flatIndex) => flatIndex * 2)
+                .duration(16000)
+                .attr("x", d => imageX(d.px - d.pdx))
+                .attr("y", d => imageY(d.py - d.pdy))
+                .attr("height", d => imageYsize(d.pdy * 2))
+                .attr("width", d => imageXsize(d.pdx * 2));
+        }
+
+        function appendHaloCircles(data) {
+            svg.selectAll("circle")
+                .data(data.halos)
+                .enter()
+                .append("circle")
+                .attr("cx", d => imageX(d.center_of_mass[0]))
+                .attr("cy", d => imageY(d.center_of_mass[1]))
+                .attr("r", d => imageXsize(d.virial_radius))
+                .style("stroke", "black")
+                .style("stroke-width", 2.0)
+                .style("stroke-opacity", 0.0)
+                .style("fill", "white")
+                .style("fill-opacity", 0.0)
+            svg.selectAll("circle")
+                .data(data.halos)
+                .transition()
+                .duration(2000)
+                .delay( (d, i) => i * 5)
+                .style("stroke-opacity", 1.0)
+                .style("fill-opacity", 0.2);
+        }
+
+        function fadeOutImage(data) {
+            svg.selectAll("rect")
+               .transition()
+               .duration(2000)
+               .style("fill-opacity", 0.0);
+        }
+
+        var _transitions = [
+            {
+                transitionForward: () => loadData.then(drawDisk),
+            },
+            {
+                transitionForward: () => loadData.then(transitionDiskToImage),
+            },
+            {
+                transitionForward: () => loadData.then(appendHaloCircles),
+            },
+            {
+                transitionForward: () => loadData.then(fadeOutImage)
+            }
+        ];
+    </script>
+  </body>
+</html>
