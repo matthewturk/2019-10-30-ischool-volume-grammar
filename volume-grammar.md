@@ -5,9 +5,8 @@
 <div style="height: 6.0em;"></div>
 
 ## Matthew Turk & Sam Walkow
-## iSchool Research Showcase
 
-<p style="text-align: right;" data-markdown="true">`mjturk@illinois.edu`</p> 
+<p style="text-align: right;" data-markdown=true><tt>mjturk@illinois.edu</tt> & <tt>swalkow2@illinois.edu</tt></p> 
 
 ---
 
@@ -19,25 +18,63 @@
 <!-- .slide: data-background-image="https://upload.wikimedia.org/wikipedia/commons/b/bd/Kelvin_Helmholz_wave_clouds.jpg" 
              data-background-size="cover" data-background-repeat="none" class="full" -->
 
-<p class="mediumtext centered"><a href="https://commons.wikimedia.org/wiki/File:Kelvin_Helmholz_wave_clouds.jpg">Brocken Inaglory [CC BY-SA 4.0], via Wikimedia Commons</a></p>
+<div class="multiCol">
+<div class="col" data-markdown=true>
+</div>
+<div class="col fragment fade-in" style="opacity:0.7;background-color: white;" data-markdown=true>
+`$$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}) &= 0\\
+{\frac {\partial \mathbf {v} }{\partial t}}+\mathbf {v} \cdot \nabla \mathbf {v} +{\frac {\nabla p}{\rho }}&=\mathbf {g}\\
+{\partial e \over \partial t}+\mathbf {v} \cdot \nabla e+{\frac {p}{\rho }}\nabla \cdot \mathbf {v} &=0\end{aligned}$$`
+</div>
+</div>
+
+<!--<p class="mediumtext centered"><a href="https://commons.wikimedia.org/wiki/File:Kelvin_Helmholz_wave_clouds.jpg">Brocken Inaglory [CC BY-SA 4.0], via Wikimedia Commons</a></p> -->
 
 ---
 
-
+<div class="multiCol">
+<div class="col">
+<div class="fig-container" data-style="height: 700px;" data-file="figures/kh_example.html" data-markdown=true>
+</div>
+</div>
+<div class="col" data-markdown=true>
+`$$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}) &= 0\\
+{\frac {\partial \mathbf {v} }{\partial t}}+\mathbf {v} \cdot \nabla \mathbf {v} +{\frac {\nabla p}{\rho }}&=\mathbf {g}\\
+{\partial e \over \partial t}+\mathbf {v} \cdot \nabla e+{\frac {p}{\rho }}\nabla \cdot \mathbf {v} &=0\end{aligned}$$`
+</div>
+</div>
 
 ---
 
-<p class="fragment step-fade-in-then-out" data-fragment-index="1">Disk</p>
-<p class="fragment step-fade-in-then-out" data-fragment-index="2">Memory</p>
-<p class="fragment step-fade-in-then-out" data-fragment-index="3">Spatial</p>
+<p class="fragment step-fade-in-then-out">Disk</p>
+<p class="fragment step-fade-in-then-out">Memory</p>
+<p class="fragment step-fade-in-then-out">Spatial</p>
 
 <div class="fig-container" data-file="figures/volume_layout.html" data-preload data-style="height: 768px;">
 </div>
 
 ---
 
-<div class="fig-container" data-file="figures/cosmology.html" data-preload data-style="height: 767px;">
+<div class="multiCol">
+<div class="col">
+<div class="fig-container" data-file="figures/galaxy_transformations.html" data-preload data-style="height: 768px;">
 </div>
+</div>
+<div class="col" data-markdown=true>
+
+# Transformations
+
+<p class="fragment">"Primitive" variables: $\rho, \mathbf{v}, e, ...$ can be combined in many different ways to produce fields that exist <i>in potentia</i>.</p>
+<p class="fragment">Registration enables combinations at fixed spatial locations.</p>
+<p class="fragment">For example, we can apply the arithmetic manipulation:
+$$|v| = \sqrt{v_x^2 + v_y^2}$$
+</p>
+</div>
+</div>
+
+---
+
+<div class="fig-container" data-file="figures/cosmology.html" data-preload data-style="height: 768px;">
 
 ---
 
@@ -71,4 +108,79 @@
 
 ---
 
-# 
+(Ok, time for Sam to take over!)
+
+---
+
+# Imagine: a house
+
+ * A house has multiple levels, multiple rooms, and lots of walls.
+ * Houses are designed for one person or family, with their needs.
+ * People add on to that house, with different foundations, architectural styles and tastes.
+ * What belongs where?  Which room is which?
+ * Maintenance becomes ... challenging.
+
+ * yt is a house with many levels, rooms, and a lot of walls
+ * The house was designed for astronomers
+ * New additions rely from different foundations
+ * It's unclear what belongs where, in what room
+ * It's difficult to maintain
+ * Other natural science domains
+
+---
+
+# Imagine: a house
+
+Our house is `yt`, and the people who built it were astronomers.
+
+---
+
+# Software Rennovation
+
+We want to create a flexible, context-aware platform for natural science inquiry.
+
+<span class="fragment"><i class="fas fa-globe-africa fa-5x"></i></span>
+<span class="fragment"><i class="fas fa-bolt fa-5x"></i></span>
+<span class="fragment"><i class="fas fa-brain fa-5x"></i></span>
+<span class="fragment"><i class="fas fa-water fa-5x"></i></span>
+<span class="fragment"><i class="fas fa-star fa-5x"></i></span>
+
+---
+
+ * To create a flexible, context aware platform for nature science domains:
+   * Oceanography
+   * Neuroimaging
+   * Geophysics
+   * Astronomy
+   * Weather
+ * Grammar and Vocabulary
+   * Defining and grouping yt operations
+   * Describing relationships and rules of those operations
+
+---
+
+## yt reference implementation
+
+ * Our house functions a specific way, and can only be navigated a certain way
+ * Developing an ontology-like layer onto yt 
+ * Defining yt objects (building blocks/foundation), relationships between objects, and rules for those objects and relationships
+ * By dividing yt operations into a four categories, we can finalize rules for the current mental model:
+   * Data and data structures (datasets)
+   * Loading, representing, visualizing and analyzing data (relationships)
+   * Grammar (rules)
+ * An organized, mature mental model can now be expanded on and applied to other domains and can guide development
+
+---
+
+# yt Grammar - a toolbox, instead of a tool
+
+ * Start thinking function first, as opposed to tool first
+ * Ex. Did you think of making waffles before you had a waffle maker?
+ * Tools guide our process of inquiry
+ * But they shouldn’t be the only lens were see our problems through, because then we stop seeing problems outside of the scope or functionality of our tool
+ * Adding context awareness to yt to become not just a tool, but a variety of operations for scientists to fit to their mental model and research problems
+ * Context as a way to improve sustainability:
+   * Reduce cognitive effort
+   * Don’t need to reinvent the wheel (or waffle maker)
+   * Maybe we can reverse the tendency - instead of distilling domain knowledge into a tool, we can leverage domain knowledge to add to and improve yt as a tool box with variety
+

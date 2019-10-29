@@ -7,17 +7,18 @@
       <script src="volgrammar-functions.js"></script>
   </head>
   <body>
-    <div id="vis-volume-layout"></div>
+    <div id="vis-output00080"></div>
     
     <script type="text/javascript">
 
         const svg = d3
-                .select("#vis-volume-layout")
-                .append("svg")
-                .attr("viewBox", [0, 0, 1024, 768]);
+            .select("#vis-output00080")
+            .append("svg")
+            .attr("viewBox", [0, 0, 1024, 768]);
 
         // set up a promise
         var loadData = d3.json("output_00080_info.json");
+        var cellColorBW = d3.scaleSequentialLog(d3.interpolateGreys).domain([2e-31, 2.2e-28]);
         var cellColor = d3.scaleSequentialLog(d3.interpolateViridis).domain([2e-31, 2.2e-28]);
 
         var imageXsize = d3.scaleLinear().domain([0.0, 1.0]).range([0, 500]);
@@ -37,10 +38,10 @@
                 .attr("height", 4)
                 .attr("width", 4)
                 .style("stroke", "none")
-                .style("fill", d => cellColor(d.density));
+                .style("fill", d => cellColorBW(d.density));
         }
 
-        function transitionDiskToImage(data) { 
+        function transitionDiskToImage(data) {
             svg.selectAll("rect")
                 .data(data.projection)
                 .transition()
@@ -49,7 +50,8 @@
                 .attr("x", d => imageX(d.px - d.pdx))
                 .attr("y", d => imageY(d.py - d.pdy))
                 .attr("height", d => imageYsize(d.pdy * 2))
-                .attr("width", d => imageXsize(d.pdx * 2));
+                .attr("width", d => imageXsize(d.pdx * 2))
+                .style("fill", d => cellColor(d.density));
         }
 
         function appendHaloCircles(data) {
@@ -69,32 +71,27 @@
                 .data(data.halos)
                 .transition()
                 .duration(2000)
-                .delay( (d, i) => i * 5)
+                .delay((d, i) => i * 5)
                 .style("stroke-opacity", 1.0)
                 .style("fill-opacity", 0.2);
         }
 
         function fadeOutImage(data) {
             svg.selectAll("rect")
-               .transition()
-               .duration(2000)
-               .style("fill-opacity", 0.0);
+                .transition()
+                .duration(2000)
+                .style("fill-opacity", 0.0);
         }
 
-        var _transitions = [
-            {
-                transitionForward: () => loadData.then(drawDisk),
-            },
-            {
-                transitionForward: () => loadData.then(transitionDiskToImage),
-            },
-            {
-                transitionForward: () => loadData.then(appendHaloCircles),
-            },
-            {
-                transitionForward: () => loadData.then(fadeOutImage)
-            }
-        ];
+        var _transitions = [{
+            transitionForward: () => loadData.then(drawDisk),
+        }, {
+            transitionForward: () => loadData.then(transitionDiskToImage),
+        }, {
+            transitionForward: () => loadData.then(appendHaloCircles),
+        }, {
+            transitionForward: () => loadData.then(fadeOutImage)
+        }];
     </script>
   </body>
 </html>

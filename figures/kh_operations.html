@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flubber/0.4.2/flubber.min.js"></script>
+      <script src="https://unpkg.com/d3-rect"></script>
+      <script src="volgrammar-functions.js"></script>
+  </head>
+  <body>
+    <div id="vis-kh-operations"></div>
+    
+    <script type="text/javascript">
+
+        const svg = d3
+                .select("#vis-kh-operations")
+                .append("svg")
+                .attr("viewBox", [0, 0, 1024, 768]);
+
+        function loadData() {
+            return Promise.all([ 
+                d3.json("kh.json"), d3.json("kh_amr.json")
+            ]).then( data => {kh: data[0], kh_amr: data[1]} )
+        }
+
+        var cfg = defaultConfig([6, 8], [
+            [
+                [-120.0, 120.0],
+                [20.0, 200.0]
+            ],
+            [
+                [-160.0, 160.0],
+                [0.0, Math.PI]
+            ]
+        ]);
+
+        var cellDataWithAMR = createCells(cfg, 0, [6, 8], [0, 0], -220).concat(
+                createCells(cfg, 1, [4, 8], [4, 2], 160));
+
+        function setup() {
+          svg.selectAll("path")
+            .data(cellDataWithAMR)
+            .enter()
+            .append("path")
+            .attr("stroke", "black")
+            .attr("fill", d => cellColor(d.flatIndex))
+            .attr("opacity", 0.75)
+            .attr("d", (d, path_i) => pathCollection[path_i]);
+        }
+
+        function transitionCells(interpolator) {
+            svg.selectAll("path")
+                .data(cellDataWithAMR)
+                .transition()
+                .delay(d => (d.flatIndex + 1) * 10)
+                .duration(2000)
+                .attrTween("d", function(d, path_i) { return interpolator[path_i]});
+        }
+
+        var _transitions = [
+            {
+                transitionForward: () => setup(cellsDisk),
+                index: 0
+            },
+            {
+                transitionForward: () => transitionCells(forwardInt[0]),
+                transitionBackward: () => transitionCells(reverseInt[0]),
+                index: 1
+            },
+            {
+                transitionForward: () => transitionCells(forwardInt[1]),
+                transitionBackward: () => transitionCells(reverseInt[1]),
+                index: 2
+            }
+        ];
+    </script>
+  </body>
+</html>

@@ -11,50 +11,76 @@
     
     <script type="text/javascript">
 
+        const svg = d3
+            .select("#vis-volume-layout")
+            .append("svg")
+            .attr("viewbox", [-500, -300, 1000, 600]);
 
-        var forwardInt = [flubber.interpolateAll(cellsDisk, cellsMemory),
-            flubber.interpolateAll(cellsMemory, cellsCyl),
-            flubber.interpolateAll(cellsCyl, cellsDisk)];
-        var reverseInt = [flubber.interpolateAll(cellsMemory, cellsDisk),
-            flubber.interpolateAll(cellsCyl, cellsMemory),
-            flubber.interpolateAll(cellsDisk, cellsCyl)];
+        var cfg = defaultconfig([12, 16], [
+            [
+                [-120.0, 120.0],
+                [20.0, 200.0]
+            ],
+            [
+                [-160.0, 160.0],
+                [0.0, math.pi]
+            ]
+        ]);
 
-        function setup(pathCollection) {
-          svg.selectAll("path")
-            .data(cellDataWithAMR)
-            .enter()
-            .append("path")
-            .attr("stroke", "black")
-            .attr("fill", d => cellColor(d.flatIndex))
-            .attr("opacity", 0.75)
-            .attr("d", (d, path_i) => pathCollection[path_i]);
+        var celldatawithamr = createcells(cfg, 0, [12, 16], [0, 0], -400).concat(
+            createcells(cfg, 1, [12, 16], [2, 4], -200)).concat(
+            createcells(cfg, 2, [8, 8], [8, 10], 0)).concat(
+            createcells(cfg, 2, [4, 6], [16, 32], 200));
+
+        var pathcollection = createpaths(cfg, celldatawithamr);
+        var cellsdisk = pathcollection
+
+        var forwardint = [
+            flubber.interpolateall(pathcollection.disk, pathcollection.memory),
+            flubber.interpolateall(pathcollection.memory, pathcollection.cyl),
+            flubber.interpolateall(pathcollection.cyl, pathcollection.disk)
+        ];
+
+        var reverseint = [
+            flubber.interpolateall(pathcollection.memory, pathcollection.disk),
+            flubber.interpolateall(pathcollection.cyl, pathcollection.memory),
+            flubber.interpolateall(pathcollection.disk, pathcollection.cyl)
+        ];
+
+        function setup() {
+            var cellColor = d3.scaleSequential(d3.interpolateSpectral)
+                .domain([0, pathCollection.disk.length - 1]);
+            svg.selectAll("path")
+                .data(cellDataWithAMR)
+                .enter()
+                .append("path")
+                .attr("stroke", "black")
+                .attr("fill", (d, path_i) => cellColor(path_i))
+                .attr("opacity", 0.75)
+                .attr("d", (d, path_i) => pathCollection.disk[path_i]);
         }
 
-        function transitionCells(interpolator) {
+        function transitionCells( interpolator) {
             svg.selectAll("path")
                 .data(cellDataWithAMR)
                 .transition()
                 .delay(d => (d.flatIndex + 1) * 10)
                 .duration(2000)
-                .attrTween("d", function(d, path_i) { return interpolator[path_i]});
+                .attrTween("d", function(d, path_i) {
+                    return interpolator[path_i]
+                });
         }
 
-        var _transitions = [
-            {
-                transitionForward: () => setup(cellsDisk),
-                index: 0
-            },
-            {
-                transitionForward: () => transitionCells(forwardInt[0]),
-                transitionBackward: () => transitionCells(reverseInt[0]),
-                index: 1
-            },
-            {
-                transitionForward: () => transitionCells(forwardInt[1]),
-                transitionBackward: () => transitionCells(reverseInt[1]),
-                index: 2
-            }
-        ];
+        var _transitions = [{
+            transitionForward: () => setup(cellsDisk),
+        }, {
+            transitionForward: () => transitionCells(forwardInt[0]),
+            transitionBackward: () => transitionCells(reverseInt[0]),
+        }, {
+            transitionForward: () => transitionCells(forwardInt[1]),
+            transitionBackward: () => transitionCells(reverseInt[1]),
+        }];
+
     </script>
   </body>
 </html>
