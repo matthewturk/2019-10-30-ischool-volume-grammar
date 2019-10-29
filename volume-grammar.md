@@ -22,9 +22,9 @@
 <div class="col" data-markdown=true>
 </div>
 <div class="col fragment fade-in" style="opacity:0.7;background-color: white;" data-markdown=true>
-`$$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}) &= 0\\
+$$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}) &= 0\\
 {\frac {\partial \mathbf {v} }{\partial t}}+\mathbf {v} \cdot \nabla \mathbf {v} +{\frac {\nabla p}{\rho }}&=\mathbf {g}\\
-{\partial e \over \partial t}+\mathbf {v} \cdot \nabla e+{\frac {p}{\rho }}\nabla \cdot \mathbf {v} &=0\end{aligned}$$`
+{\partial e \over \partial t}+\mathbf {v} \cdot \nabla e+{\frac {p}{\rho }}\nabla \cdot \mathbf {v} &=0\end{aligned}$$
 </div>
 </div>
 
@@ -38,19 +38,31 @@
 </div>
 </div>
 <div class="col" data-markdown=true>
-`$$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}) &= 0\\
+$$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}) &= 0\\
 {\frac {\partial \mathbf {v} }{\partial t}}+\mathbf {v} \cdot \nabla \mathbf {v} +{\frac {\nabla p}{\rho }}&=\mathbf {g}\\
-{\partial e \over \partial t}+\mathbf {v} \cdot \nabla e+{\frac {p}{\rho }}\nabla \cdot \mathbf {v} &=0\end{aligned}$$`
+{\partial e \over \partial t}+\mathbf {v} \cdot \nabla e+{\frac {p}{\rho }}\nabla \cdot \mathbf {v} &=0\end{aligned}$$
 </div>
 </div>
 
 ---
 
-<p class="fragment step-fade-in-then-out">Disk</p>
-<p class="fragment step-fade-in-then-out">Memory</p>
-<p class="fragment step-fade-in-then-out">Spatial</p>
+<div class="multiCol">
+<div class="col">
 
-<div class="fig-container" data-file="figures/volume_layout.html" data-preload data-style="height: 768px;">
+# Registration
+
+<p class="fragment">Data is laid out on <b>disk</b> in some manner that may or may not correspond to the spatial organization or physical meaning of what it represents.</p>
+
+<p class="fragment">This data can be laid out in a data structure in <b>memory</b> that represents its logical ordering, with axes and dimensions.</p>
+
+<p class="fragment">Finally, we can register one or multiple datasets in a consistent <b>spatial</b> representation so that we can query fields at specific locations and define $f(\mathbf{x})$.</p>
+
+</div>
+
+<div class="col">
+<div class="fig-container" data-file="figures/volume_layout.html" data-preload data-style="height: 600px;">
+</div>
+</div>
 </div>
 
 ---

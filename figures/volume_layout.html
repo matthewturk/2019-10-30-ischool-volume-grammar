@@ -14,37 +14,40 @@
         const svg = d3
             .select("#vis-volume-layout")
             .append("svg")
-            .attr("viewbox", [-500, -300, 1000, 600]);
+            .attr("height", 600)
+            .attr("width", 400)
+            .attr("viewBox", [0, -150, 200, 300]);
 
-        var cfg = defaultconfig([12, 16], [
+        var cfg = defaultConfig([12, 16], [
             [
-                [-120.0, 120.0],
-                [20.0, 200.0]
+                [20.0, 180.0],
+                [15.0, 150.0]
             ],
             [
-                [-160.0, 160.0],
-                [0.0, math.pi]
+                [-120.0, 120.0],
+                [0.0, Math.PI]
             ]
         ]);
 
-        var celldatawithamr = createcells(cfg, 0, [12, 16], [0, 0], -400).concat(
-            createcells(cfg, 1, [12, 16], [2, 4], -200)).concat(
-            createcells(cfg, 2, [8, 8], [8, 10], 0)).concat(
-            createcells(cfg, 2, [4, 6], [16, 32], 200));
+        var cellDataWithAMR = createCells(cfg, 0, [12, 16], [0, 0], 0).concat(
+            createCells(cfg, 1, [12, 16], [2, 4], 45)).concat(
+            createCells(cfg, 2, [8, 8], [8, 10], 90)).concat(
+            createCells(cfg, 2, [4, 6], [16, 32], 135));
 
-        var pathcollection = createpaths(cfg, celldatawithamr);
-        var cellsdisk = pathcollection
+        var pathCollection = createPaths(cfg, cellDataWithAMR, 6, 0.4, 0.4);
+        var cellsDisk = pathCollection.disk;
+        console.log(pathCollection);
 
-        var forwardint = [
-            flubber.interpolateall(pathcollection.disk, pathcollection.memory),
-            flubber.interpolateall(pathcollection.memory, pathcollection.cyl),
-            flubber.interpolateall(pathcollection.cyl, pathcollection.disk)
+        var forwardInt = [
+            flubber.interpolateAll(pathCollection.disk, pathCollection.memory),
+            flubber.interpolateAll(pathCollection.memory, pathCollection.cyl),
+            flubber.interpolateAll(pathCollection.cyl, pathCollection.disk)
         ];
 
-        var reverseint = [
-            flubber.interpolateall(pathcollection.memory, pathcollection.disk),
-            flubber.interpolateall(pathcollection.cyl, pathcollection.memory),
-            flubber.interpolateall(pathcollection.disk, pathcollection.cyl)
+        var reverseInt = [
+            flubber.interpolateAll(pathCollection.memory, pathCollection.disk),
+            flubber.interpolateAll(pathCollection.cyl, pathCollection.memory),
+            flubber.interpolateAll(pathCollection.disk, pathCollection.cyl)
         ];
 
         function setup() {
@@ -54,9 +57,10 @@
                 .data(cellDataWithAMR)
                 .enter()
                 .append("path")
-                .attr("stroke", "black")
-                .attr("fill", (d, path_i) => cellColor(path_i))
-                .attr("opacity", 0.75)
+                .style("stroke", "black")
+                .style("stroke-width", 0.5)
+                .style("fill", (d, path_i) => cellColor(path_i))
+                .style("fill-opacity", 1.0)
                 .attr("d", (d, path_i) => pathCollection.disk[path_i]);
         }
 

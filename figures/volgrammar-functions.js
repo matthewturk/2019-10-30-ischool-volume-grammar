@@ -1,12 +1,13 @@
 const width = 960;
 const height = 500;
 
-function createPaths(globalConfig, cellData, Nrow = 9) {
+function createPaths(globalConfig, cellData, Nrow = 9, diskScaleX = 1, diskScaleY = 1) {
+    var diskDds = [globalConfig.dds[0][0] * diskScaleX, globalConfig.dds[1][0] * diskScaleY];
     var cellsDisk = cellData.map((d, flatIndex) => d3.rect({
-        x: (d.flatIndex % Nrow) * globalConfig.dds[0][0] + globalConfig.bounds[0][0][0] + d.groupOffset,
-        y: Math.floor(d.flatIndex / Nrow) * globalConfig.dds[1][0] + globalConfig.bounds[1][0][0],
-        width: globalConfig.dds[0][0],
-        height: globalConfig.dds[1][0]
+        x: (d.flatIndex % Nrow) * diskDds[0] + globalConfig.bounds[0][0][0] + d.groupOffset,
+        y: Math.floor(d.flatIndex / Nrow) * diskDds[1] + globalConfig.bounds[1][0][0],
+        width: diskDds[0],
+        height: diskDds[1]
     }));
     var cellsMemory = cellData.map(d => d3.rect({
         x: d.x[0],
