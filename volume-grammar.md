@@ -46,6 +46,15 @@ $$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}
 
 ---
 
+# Vocabulary of Data Analysis
+
+* Registration
+* Transformation
+* Selection
+* Reduction
+
+---
+
 <div class="multiCol">
 <div class="col">
 
@@ -87,13 +96,6 @@ $$|v| = \sqrt{v_x^2 + v_y^2}$$
 ---
 
 <div class="fig-container" data-file="figures/cosmology.html" data-preload data-style="height: 768px;">
-
----
-
-* Selection
-* Transformation
-* Registration
-* Reduction
 
 ---
 
