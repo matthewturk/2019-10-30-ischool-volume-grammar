@@ -237,6 +237,3 @@ We want to create a flexible, context-aware platform for natural science inquiry
 * Start thinking function first, as opposed to tool first
 * A variety of operations for scientists to fit to their mental model and research problems
 * Shape our tools through domain knowledge
-
-
-   * Maybe we can reverse the tendency - instead of distilling domain knowledge into a tool, we can leverage domain knowledge to add to and improve yt as a tool box with variety
