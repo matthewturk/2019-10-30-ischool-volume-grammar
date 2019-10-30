@@ -147,17 +147,15 @@
                 .attr("r", 5.0)
                 .style("fill", "#2196F3");
 
-            d3.range(10).forEach( () => {
-                for (var segi = 0; segi < Nsegments; segi++) {
-                    var tr = d3.transition().duration(100);
-                    var point = myPath.getPointAtLength(segi * dt);
-                    circle
-                        .transition(tr)
-                        .attr("cx", point.x)
-                        .attr("cy", point.y);
-                    await tr.end();
-                }
-            });
+            for (var segi = 0; segi < (10 * Nsegments); segi++) {
+                var tr = d3.transition().duration(10);
+                var point = myPath.getPointAtLength((segi % Nsegments) * dt);
+                circle
+                    .transition(tr)
+                    .attr("cx", point.x)
+                    .attr("cy", point.y);
+                await tr.end();
+            };
         }
 
         var _transitions = [

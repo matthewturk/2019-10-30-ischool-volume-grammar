@@ -57,7 +57,7 @@
                     svg.selectAll("path")
                     .data(data.cells)
                     .transition()
-                    .duration(750)
+                    .duration(500)
                     .style("fill", (d, flatIndex) => cellColor(d.value[i]))
                     .end()
                 )

@@ -256,47 +256,53 @@ Our house is `yt`, and the people who built it were astronomers.
 
 # Software Renovation
 
-We want to create a flexible, context-aware platform for natural science inquiry.
+We want to create a flexible, context-aware platform for natural science inquiry by <b>defining and grouping yt operations by function</b> and by <b>describing relationships and rules of those operations</b>.
 
-<span class="fragment"><i class="fas fa-globe-africa fa-5x"></i></span>
-<span class="fragment"><i class="fas fa-bolt fa-5x"></i></span>
-<span class="fragment"><i class="fas fa-brain fa-5x"></i></span>
-<span class="fragment"><i class="fas fa-water fa-5x"></i></span>
-<span class="fragment"><i class="fas fa-star fa-5x"></i></span>
+<span data-fragment-index="1" class="fragment"><i class="fas fa-globe-africa fa-5x"></i></span>
+<span data-fragment-index="2" class="fragment"><i class="fas fa-bolt fa-5x"></i></span>
+<span data-fragment-index="3" class="fragment"><i class="fas fa-brain fa-5x"></i></span>
+<span data-fragment-index="4" class="fragment"><i class="fas fa-water fa-5x"></i></span>
+<span data-fragment-index="5" class="fragment"><i class="fas fa-star fa-5x"></i></span>
 
-* To create a flexible, context aware platform for nature science domains:
-  * Oceanography
-  * Neuroimaging
-  * Geophysics
-  * Astronomy
-  * Weather
-* Grammar and Vocabulary
-  * Defining and grouping yt operations by function
-  * Describing relationships and rules of those operations
+<p class="fragment step-fade-in-then-out" style="font-size:200%;" data-fragment-index="1">Geophysics</p>
+<p class="fragment step-fade-in-then-out" style="font-size:200%;" data-fragment-index="2">Weather</p>
+<p class="fragment step-fade-in-then-out" style="font-size:200%;" data-fragment-index="3">Neuroimaging</p>
+<p class="fragment step-fade-in-then-out" style="font-size:200%;" data-fragment-index="4">Oceanography</p>
+<p class="fragment step-fade-in-then-out" style="font-size:200%;" data-fragment-index="5">Astronomy</p>
+
 
 ---
 
 ## Software Renovation
 
-* Our house functions a specific way, and can only be navigated a certain way
+Our house functions a specific way, and can only be navigated a certain way.
 
 ---
 
+<!-- .slide: data-background-image="images/yt_houses_reference.svg"
+             data-background-size="cover" data-background-repeat="none" -->
+
 ## Software Renovation
 
-* Developing an ontology-like layer onto yt
+But, we can develop an ontology-like layer onto yt.
 
 ---
 
+<!-- .slide: data-background-image="images/yt_neuro_example.svg"
+             data-background-size="cover" data-background-repeat="none" -->
+
 ## Software Renovation
 
-* Defining yt objects (building blocks/foundation), relationships between objects, and rules for those objects and relationships specific to a physical science domain
+And then by define yt objects (building blocks/foundation), relationships between objects, and rules for those objects and relationships specific to a physical science domain.
 
 ---
+ 
+<!-- .slide: data-background-image="images/yt_domains_happy.svg"
+             data-background-size="cover" data-background-repeat="none" -->
 
 ## Software Renovation
 
-* An organized, mature mental model can now be expanded on and applied to other domains
+An organized, mature mental model can now be expanded on and applied to other domains.
 
 ---
 
@@ -306,3 +312,9 @@ We want to create a flexible, context-aware platform for natural science inquiry
 * Start thinking function first, as opposed to tool first
 * A variety of operations for scientists to fit to their mental model and research problems
 * Shape our tools through domain knowledge
+
+---
+
+<!-- .slide: class="titleslide" -->
+
+# Thank you!
