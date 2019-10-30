@@ -48,20 +48,64 @@ $$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}
 
 # Vocabulary of Data Analysis
 
-<ul style="list-style-type: none;">
-<li class="fragment"><span><i class="fas fa-align-right fa-5x"></i></span>
-<span style="font-size: 200%;">Registration</span>
-</li>
-<li class="fragment"><span><i class="fas fa-calculator fa-5x"></i></span>
-<span style="font-size: 200%;">Transformation</span>
-</li>
-<li class="fragment"><span><i class="fas fa-object-group fa-5x"></i></span>
-<span style="font-size: 200%;">Selection</span>
-</li>
-<li class="fragment"><span><i class="fas fa-mortar-pestle fa-5x"></i></span>
-<span style="font-size: 200%;">Reduction</span>
-</li>
-</ul>
+<div class="appearing_row" style="margin-top: 1em;">
+  <div class="fragment" data-fragment-index=1>
+  <div class="right_align">
+    <span><i class="fas fa-align-right fa-5x"></i></span>
+  </div>
+  </div>
+  <div class="fragment" data-fragment-index=1>
+  <div class="left_align" style="font-size: 200%;">
+    Registration
+  </div>
+  </div>
+</div>
+
+<br clear="all"/>
+
+<div class="appearing_row" style="margin-top: 1em;">
+  <div class="fragment" data-fragment-index=2>
+  <div class="right_align">
+    <span><i class="fas fa-calculator fa-5x"></i></span>
+  </div>
+  </div>
+  <div class="fragment" data-fragment-index=2>
+  <div class="left_align" style="font-size: 200%;">
+    Transformation
+  </div>
+  </div>
+</div>
+
+<br clear="all"/>
+
+<div class="appearing_row" style="margin-top: 1em;">
+  <div class="fragment" data-fragment-index=3>
+  <div class="right_align">
+    <span><i class="fas fa-object-group fa-5x"></i></span>
+  </div>
+  </div>
+  <div class="fragment" data-fragment-index=3>
+  <div class="left_align" style="font-size: 200%;">
+    Selection
+  </div>
+  </div>
+</div>
+
+<br clear="all"/>
+
+<div class="appearing_row" style="margin-top: 1em;">
+  <div class="fragment" data-fragment-index=4>
+  <div class="right_align">
+    <span><i class="fas fa-mortar-pestle fa-5x"></i></span>
+  </div>
+  <div class="fragment" data-fragment-index=4>
+  <div class="left_align" style="font-size: 200%;">
+    Reduction
+  </div>
+  </div>
+</div>
+
+<br clear="all"/>
 
 ---
 
