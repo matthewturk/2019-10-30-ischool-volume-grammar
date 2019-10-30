@@ -209,11 +209,23 @@ We can apply reductions along axes, paths and non-trivial manifolds.
 
 # Imagine: a house
 
- * A house has multiple levels, multiple rooms, and lots of walls.
- * Houses are designed for one person or family, with their needs.
- * People add on to that house, with different foundations, architectural styles and tastes.
- * What belongs where?  Which room is which?
- * Maintenance becomes ... challenging.
+<div class="multiCol" data-markdown>
+<div class="col">
+<ul>
+<li class="fragment">A house has multiple levels, multiple rooms, and lots of walls.</li>
+<li class="fragment">Houses are designed for one person or family, with their needs.</li>
+<li class="fragment">People add on to that house, with different foundations, architectural styles and tastes.</li>
+<li class="fragment">What belongs where?  Which room is which?</li>
+<li class="fragment">Maintenance becomes ... challenging.</li>
+</ul>
+</div>
+
+<div class="col">
+<div class="fig-container" data-file="figures/house.html" data-preload data-style="height: 600px;">
+</div>
+</div>
+
+</div>
 
 ---
 
