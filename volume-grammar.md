@@ -48,10 +48,20 @@ $$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}
 
 # Vocabulary of Data Analysis
 
-* Registration
-* Transformation
-* Selection
-* Reduction
+<ul style="list-style-type: none;">
+<li class="fragment"><span><i class="fas fa-align-right fa-5x"></i></span>
+<span style="font-size: 200%;">Registration</span>
+</li>
+<li class="fragment"><span><i class="fas fa-calculator fa-5x"></i></span>
+<span style="font-size: 200%;">Transformation</span>
+</li>
+<li class="fragment"><span><i class="fas fa-object-group fa-5x"></i></span>
+<span style="font-size: 200%;">Selection</span>
+</li>
+<li class="fragment"><span><i class="fas fa-mortar-pestle fa-5x"></i></span>
+<span style="font-size: 200%;">Reduction</span>
+</li>
+</ul>
 
 ---
 
