@@ -185,17 +185,15 @@ We want to create a flexible, context-aware platform for natural science inquiry
 <span class="fragment"><i class="fas fa-water fa-5x"></i></span>
 <span class="fragment"><i class="fas fa-star fa-5x"></i></span>
 
----
-
- * To create a flexible, context aware platform for nature science domains:
-   * Oceanography
-   * Neuroimaging
-   * Geophysics
-   * Astronomy
-   * Weather
- * Grammar and Vocabulary
-   * Defining and grouping yt operations by function
-   * Describing relationships and rules of those operations
+* To create a flexible, context aware platform for nature science domains:
+  * Oceanography
+  * Neuroimaging
+  * Geophysics
+  * Astronomy
+  * Weather
+* Grammar and Vocabulary
+  * Defining and grouping yt operations by function
+  * Describing relationships and rules of those operations
 
 ---
 
