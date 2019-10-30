@@ -6,16 +6,16 @@
 
 ## Matthew Turk & Sam Walkow
 
-<p style="text-align: right;" data-markdown=true><tt>mjturk@illinois.edu</tt> & <tt>swalkow2@illinois.edu</tt></p> 
+<p style="text-align: right;" data-markdown=true><tt>mjturk@illinois.edu</tt> & <tt>swalkow2@illinois.edu</tt></p>
 
 ---
 
-<!-- .slide: data-background-image="images/clouds.jpg" 
+<!-- .slide: data-background-image="images/clouds.jpg"
              data-background-size="cover" data-background-repeat="none" -->
 
 ---
 
-<!-- .slide: data-background-image="https://upload.wikimedia.org/wikipedia/commons/b/bd/Kelvin_Helmholz_wave_clouds.jpg" 
+<!-- .slide: data-background-image="https://upload.wikimedia.org/wikipedia/commons/b/bd/Kelvin_Helmholz_wave_clouds.jpg"
              data-background-size="cover" data-background-repeat="none" class="full" -->
 
 <div class="multiCol">
@@ -161,22 +161,21 @@ We can apply reductions along axes, paths and non-trivial manifolds.
  * What belongs where?  Which room is which?
  * Maintenance becomes ... challenging.
 
- * yt is a house with many levels, rooms, and a lot of walls
- * The house was designed for astronomers
- * New additions rely from different foundations
- * It's unclear what belongs where, in what room
- * It's difficult to maintain
- * Other natural science domains
-
 ---
 
 # Imagine: a house
 
 Our house is `yt`, and the people who built it were astronomers.
 
+* yt is a house with many levels, rooms, and a lot of walls
+* New additions rely on different foundations
+* It's unclear what belongs where, in what room
+* It's difficult to maintain
+* Other natural science domains have to navigate
+
 ---
 
-# Software Rennovation
+# Software Renovation
 
 We want to create a flexible, context-aware platform for natural science inquiry.
 
@@ -195,33 +194,46 @@ We want to create a flexible, context-aware platform for natural science inquiry
    * Astronomy
    * Weather
  * Grammar and Vocabulary
-   * Defining and grouping yt operations
+   * Defining and grouping yt operations by function
    * Describing relationships and rules of those operations
 
 ---
 
-## yt reference implementation
+## Software Renovation
 
- * Our house functions a specific way, and can only be navigated a certain way
- * Developing an ontology-like layer onto yt 
- * Defining yt objects (building blocks/foundation), relationships between objects, and rules for those objects and relationships
- * By dividing yt operations into a four categories, we can finalize rules for the current mental model:
-   * Data and data structures (datasets)
-   * Loading, representing, visualizing and analyzing data (relationships)
-   * Grammar (rules)
- * An organized, mature mental model can now be expanded on and applied to other domains and can guide development
+* Our house functions a specific way, and can only be navigated a certain way
+
+*Have our house, but with a blue dot moving from one end of the house to other, in a zig zag fashion (I hope that made sense)*
+
+---
+
+## Software Renovation
+
+* Developing an ontology-like layer onto yt
+
+*Image layer: have out yt house, but with a blue line going along the floor. Or, have the foundation/floor as bar, and several ‘houses’ over top. These could also be the icons:*
+
+---
+
+## Software Renovation
+
+* Defining yt objects (building blocks/foundation), relationships between objects, and rules for those objects and relationships specific to a physical science domain
+
+*Maybe we should use a domain example here? So from the image in the last slide just have one house being ‘built’*
+
+---
+
+## Software Renovation
+
+* An organized, mature mental model can now be expanded on and applied to other domains
+
+*Use the multi-house image, but with people or happy faces adding to domain specific homes and adding new domains*
 
 ---
 
 # yt Grammar - a toolbox, instead of a tool
 
- * Start thinking function first, as opposed to tool first
- * Ex. Did you think of making waffles before you had a waffle maker?
- * Tools guide our process of inquiry
- * But they shouldn’t be the only lens were see our problems through, because then we stop seeing problems outside of the scope or functionality of our tool
- * Adding context awareness to yt to become not just a tool, but a variety of operations for scientists to fit to their mental model and research problems
- * Context as a way to improve sustainability:
-   * Reduce cognitive effort
-   * Don’t need to reinvent the wheel (or waffle maker)
-   * Maybe we can reverse the tendency - instead of distilling domain knowledge into a tool, we can leverage domain knowledge to add to and improve yt as a tool box with variety
-
+* Tools guide our process of inquiry, and can narrow our vision
+* Start thinking function first, as opposed to tool first
+* A variety of operations for scientists to fit to their mental model and research problems
+* Shape our tools through domain knowledge
