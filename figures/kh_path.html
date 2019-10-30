@@ -14,17 +14,17 @@
         const svg = d3
                 .select("#vis-kh-path")
                 .append("svg")
-                .attr("viewBox", [0, 0, 700, 700]);
+                .attr("viewBox", [0, 0, 1024, 768]);
 
         var loadData = Promise.all([d3.json("kh.json"), d3.json("kh_amr.json")])
             .then(data => kelvinHelmholtzAMR(data[0], data[1]));
 
         var Nsegments = 200;
         var linePlotY = d3.scaleLinear()
-            .range([700 - 32, 32]);
+            .range([512 - 32, 32]);
         var linePlotX = d3.scaleLinear()
             .domain([0, Nsegments])
-            .range([512 + 48, 700 - 64]);
+            .range([512 + 48, 1024 - 64]);
 
         var myPoints = [[18, 13], [381, 79], [443, 228], [381, 331],
                         [239, 338], [160, 183], [88, 316], [184, 441],
@@ -50,7 +50,7 @@
                 .attr("stroke-width", 1.0)
                 .attr("stroke-opacity", 0.5)
                 .style("fill", (d, flatIndex) => cellColor(d.density))
-                .style("fill-opacity", 0.2)
+                .style("fill-opacity", 0.3)
                 .attr("x", (d, flatIndex) => cellData[flatIndex].x[0])
                 .attr("y", (d, flatIndex) => cellData[flatIndex].y[0])
                 .attr("width", (d, flatIndex) => cellData[flatIndex].width[0])
@@ -98,13 +98,13 @@
                 .attr("x2", d=>d.x2)
                 .attr("y2", d=>d.y2)
                 .style("stroke", "#7C4DFF")
-                .style("stroke-width", 2.0)
+                .style("stroke-width", 4.0)
                 .style("fill", "#7C4DFF")
                 .style("stroke-opacity", 0.0)
                 .style("fill-opacity", 0.0);
 
             svg.append("g").attr("transform", "translate(560,0)").call(d3.axisLeft(linePlotY));
-            svg.append("g").attr("transform", "translate(0," + (height - 32) + ")").call(d3.axisBottom(linePlotX));
+            svg.append("g").attr("transform", "translate(0," + (512 - 32) + ")").call(d3.axisBottom(linePlotX));
             var linequery = svg.append("g")
                 .attr("id", "linequery")
                 .selectAll("line")
@@ -113,7 +113,7 @@
                 .append("line")
                 .attr("fill", "#7C4DFF")
                 .attr("stroke", "#7C4DFF")
-                .attr("stroke-width", 1.5)
+                .attr("stroke-width", 2.5)
                 .style("stroke-opacity", 0.0)
                 .style("fill-opacity", 0.0)
                 .attr("x1", (d, i) => linePlotX(i-1))
@@ -141,35 +141,33 @@
             data.pathSegments = pathSegments;
         }
 
-        function startAnimation(data) {
+        async function startAnimation(data) {
             var t = Promise.resolve();
             circle = svg.select("g#circlepath").selectAll("circle");
             circleQuery = svg.select("g#circlequery").selectAll("circle");
             path = svg.select("g#pathsegments").selectAll("line");
             line = svg.select("g#linequery").selectAll("line");
-            data.pathSegments.forEach( (seg, segi) => {
-                t.then( () => {
-                    var tr = d3.transition().duration(100);
-                    circle.transition(tr)
-                        .attr("cx", data.pathSegments[segi].x2)
-                        .attr("cy", data.pathSegments[segi].y2);
-                    path
-                        .filter(d => (d.i <= segi))
-                        .transition(tr)
-                        .style("fill-opacity", 1.0)
-                        .style("stroke-opacity", 1.0);
-                    circleQuery
-                        .transition(tr)
-                        .attr("cx", linePlotX(segi))
-                        .attr("cy", linePlotY(data.pathSegments[segi].density));
-                    linequery
-                        .filter(d => (d.i <= segi))
-                        .transition(tr)
-                        .style("fill-opacity", 1.0)
-                        .style("stroke-opacity", 1.0);
-                    return tr.end();
-                })
-            });
+            for (var segi = 0; segi < data.pathSegments.length; segi++) {
+                var tr = d3.transition().duration(100);
+                circle.transition(tr)
+                    .attr("cx", data.pathSegments[segi].x2)
+                    .attr("cy", data.pathSegments[segi].y2);
+                path
+                    .filter(d => (d.i <= segi))
+                    .transition(tr)
+                    .style("fill-opacity", 1.0)
+                    .style("stroke-opacity", 1.0);
+                circleQuery
+                    .transition(tr)
+                    .attr("cx", linePlotX(segi))
+                    .attr("cy", linePlotY(data.pathSegments[segi].density));
+                line
+                    .filter(d => (d.i <= segi))
+                    .transition(tr)
+                    .style("fill-opacity", 1.0)
+                    .style("stroke-opacity", 1.0);
+                await tr.end();
+            }
             return data;
         }
 

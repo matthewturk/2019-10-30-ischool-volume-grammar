@@ -86,7 +86,7 @@ $$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}
 <div class="fragment" data-markdown=true>
 <p>This data may carry with it attributes regarding the density of samples, its neighbors, and fundamental quantities, which can be input into a sampling function over a location.</p>
 
-$$A({\boldsymbol {r}})=\int A\left({\boldsymbol {r^{\prime }}}\right)W(|{\boldsymbol {r}}-{\boldsymbol {r^{\prime }}}|,h)\mathrm {d} V\left({\boldsymbol {r^{\prime }}}\right)}$$
+`$$ A(\mathbf{r}) = \int A(\mathbf{r}')W(|\mathbf{r} - \mathbf{r}'|, h)\mathrm{d} V(\mathbf{r}') $$`
 </div>
 
 </div>
