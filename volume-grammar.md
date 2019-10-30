@@ -34,7 +34,7 @@ $$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}
 
 <div class="multiCol">
 <div class="col">
-<div class="fig-container" data-style="height: 700px;" data-file="figures/kh_example.html" data-markdown=true>
+<div class="fig-container" data-style="height: 600px;" data-file="figures/kh_example.html" data-markdown=true>
 </div>
 </div>
 <div class="col" data-markdown=true>
@@ -78,6 +78,30 @@ $$\begin{aligned}{\partial \rho  \over \partial t}+\nabla \cdot (\rho \mathbf{v}
 
 <div class="multiCol">
 <div class="col">
+
+# Registration
+
+<p class="fragment">Given a functional form, discretely sampled data can also be registered for analysis, regardless of its layout on disk.</p>
+
+<div class="fragment" data-markdown=true>
+<p>This data may carry with it attributes regarding the density of samples, its neighbors, and fundamental quantities, which can be input into a sampling function over a location.</p>
+
+$$A({\boldsymbol {r}})=\int A\left({\boldsymbol {r^{\prime }}}\right)W(|{\boldsymbol {r}}-{\boldsymbol {r^{\prime }}}|,h)\mathrm {d} V\left({\boldsymbol {r^{\prime }}}\right)}$$
+</div>
+
+</div>
+
+<div class="col">
+<div class="fig-container" data-file="figures/particle_layout.html" data-preload data-style="height: 600px;">
+</div>
+</div>
+</div>
+
+
+---
+
+<div class="multiCol">
+<div class="col">
 <div class="fig-container" data-file="figures/galaxy_transformations.html" data-preload data-style="height: 768px;">
 </div>
 </div>
@@ -95,30 +119,33 @@ $$|v| = \sqrt{v_x^2 + v_y^2}$$
 
 ---
 
-<div class="fig-container" data-file="figures/cosmology.html" data-preload data-style="height: 768px;">
-
----
+<div class="multiCol">
+<div class="col" data-markdown=true>
 
 # Selection
 
----
-
-# Transformation
-
- * Neighbor calculation
- * Particle neighbor calculation
- * Path analysis
-
----
-
-# Registration
+<p>Points can be filtered based on their connectivity, spatial organization, or criteria from one or more field values.</p>
+</div>
+<div class="col">
+<div class="fig-container" data-file="figures/kh_operations.html" data-preload data-style="height: 768px;">
+</div>
+</div>
+</div>
 
 ---
 
-# Reduction
+# Reductions
 
- * Projection
- * Ray-casting
+We can apply reductions along axes, paths and non-trivial manifolds.
+
+<div class="fig-container" data-file="figures/kh_path.html" data-preload data-style="height: 600px;">
+</div>
+
+---
+
+# Composability
+
+<div class="fig-container" data-file="figures/cosmology.html" data-preload data-style="height: 768px;">
 
 ---
 

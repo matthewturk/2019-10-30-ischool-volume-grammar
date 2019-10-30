@@ -32,7 +32,6 @@
         var imageY = d3.scaleLinear()
             .range([16, 600]);
 
-
         var loadData = d3.json("tipsy_galaxy.json").then( data => {
             extent = [
                 Math.max(d3.max(data, d => d.particle_position_x),
@@ -130,11 +129,6 @@
                 particleHighlights.forEach( (ind, i) => {
                     t = t.then( () => {
                         // central particle is the highlight one
-                        central = svg.selectAll("path")
-                            .data(data)
-                            .filter( (d, flatIndex) => i == flatIndex);
-                        central
-                            .style("fill-opacity", 1.0);
                         svg.selectAll("line")
                             .data(data[i].nearest_neighbors)
                             .style("stroke", "black")

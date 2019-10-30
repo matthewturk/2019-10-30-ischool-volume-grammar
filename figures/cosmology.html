@@ -17,7 +17,15 @@
             .attr("viewBox", [0, 0, 1024, 768]);
 
         // set up a promise
-        var loadData = d3.json("output_00080_info.json");
+        var loadData = d3.json("output_00080_info.json").then( data => {
+            data.halos.forEach( d => {
+                d.bulk_velocity_mag = Math.sqrt(
+                    d.bulk_velocity[0]**2 +
+                    d.bulk_velocity[1]**2 +
+                    d.bulk_velocity[2]**2);
+            });
+            return data;
+        });
         var cellColorBW = d3.scaleSequentialLog(d3.interpolateGreys).domain([2e-31, 2.2e-28]);
         var cellColor = d3.scaleSequentialLog(d3.interpolateViridis).domain([2e-31, 2.2e-28]);
 
@@ -25,6 +33,9 @@
         var imageYsize = d3.scaleLinear().domain([0.0, 1.0]).range([0, 500]);
         var imageX = d3.scaleLinear().domain([0.0, 1.0]).range([512 + 6, 1024 - 6]);
         var imageY = d3.scaleLinear().domain([0.0, 1.0]).range([0, 500]);
+
+        var linePlotX = d3.scaleLog().range([64, 500])
+        var linePlotY = d3.scaleLog().range([500, 64])
 
         const Nrow = 125;
 
@@ -45,8 +56,9 @@
             svg.selectAll("rect")
                 .data(data.projection)
                 .transition()
-                .delay((d, flatIndex) => flatIndex * 2)
-                .duration(16000)
+                //.delay((d, flatIndex) => flatIndex * 4)
+                .delay((d, flatIndex) => Math.floor(flatIndex / Nrow) * 250)
+                .duration(2000)
                 .attr("x", d => imageX(d.px - d.pdx))
                 .attr("y", d => imageY(d.py - d.pdy))
                 .attr("height", d => imageYsize(d.pdy * 2))
@@ -83,6 +95,38 @@
                 .style("fill-opacity", 0.0);
         }
 
+        function moveHalosToPlot(data) {
+            linePlotX.domain(d3.extent(data.halos, d => d.total_mass)).nice();
+            linePlotY.domain(d3.extent(data.halos, d => d.bulk_velocity_mag)).nice();
+            console.log(linePlotX);
+            console.log(linePlotY);
+            svg.append("g")
+               .attr("transform", "translate(64,0)")
+               .call(d3.axisLeft(linePlotY))
+               .selectAll("text")
+               .style("text-anchor", "end")
+               .style("font-size", 20);
+            svg.append("g")
+               .attr("transform", "translate(0,500)")
+               .call(d3.axisBottom(linePlotX))
+               .selectAll("text")
+               .style("text-anchor", "end")
+               .attr("transform", "translate(-10,10)rotate(-45)")
+               .style("font-size", 20);
+            svg.selectAll("circle")
+               .data(data.halos)
+               .transition()
+               .duration(2000)
+               .attr("cx", d => linePlotX(d.total_mass))
+               .attr("cy", d => linePlotY(d.bulk_velocity_mag))
+               .attr("r", 4.0)
+               .style("stroke-width", 0.5)
+               .style("stroke-opacity", 0.5)
+               .style("fill-opacity", 0.7)
+               .style("fill", "#2196F3");
+            return data;
+        }
+
         var _transitions = [{
             transitionForward: () => loadData.then(drawDisk),
         }, {
@@ -91,6 +135,8 @@
             transitionForward: () => loadData.then(appendHaloCircles),
         }, {
             transitionForward: () => loadData.then(fadeOutImage)
+        }, {
+            transitionForward: () => loadData.then(moveHalosToPlot)
         }];
     </script>
   </body>

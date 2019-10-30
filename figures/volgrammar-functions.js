@@ -71,7 +71,7 @@ function ringermacherMead(A, B, N) {
     }
 }
 
-function kelvinHelmholtzAMR() {
+function kelvinHelmholtzAMR(kh, kh_amr) {
     var complexConfig = defaultConfig([32, 32], [
         [
             [0, 512.0],
@@ -158,12 +158,6 @@ function findOverlappingNodesRect(extent, fn) {
     }
     return visitTree;
 }
-
-datasets = Promise.all([
-    d3.json("galaxy0030.json"),
-    d3.json("kh_amr.json"),
-    d3.json("kh.json"),
-]);
 
 cfg = defaultConfig([6, 8], [
     [
