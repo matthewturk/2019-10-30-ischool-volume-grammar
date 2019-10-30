@@ -231,6 +231,10 @@ We can apply reductions along axes, paths and non-trivial manifolds.
 
 # Imagine: a house
 
+<div class="multiCol" data-markdown>
+
+<div class="col" data-markdown>
+
 Our house is `yt`, and the people who built it were astronomers.
 
 * yt is a house with many levels, rooms, and a lot of walls
@@ -238,6 +242,15 @@ Our house is `yt`, and the people who built it were astronomers.
 * It's unclear what belongs where, in what room
 * It's difficult to maintain
 * Other natural science domains have to navigate
+
+</div>
+
+<div class="col">
+<div class="fig-container" data-file="figures/house_zigzag.html" data-style="height: 600px;">
+</div>
+</div>
+
+</div>
 
 ---
 
