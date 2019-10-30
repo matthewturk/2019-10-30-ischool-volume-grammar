@@ -282,15 +282,11 @@ We want to create a flexible, context-aware platform for natural science inquiry
 
 * Our house functions a specific way, and can only be navigated a certain way
 
-*Have our house, but with a blue dot moving from one end of the house to other, in a zig zag fashion (I hope that made sense)*
-
 ---
 
 ## Software Renovation
 
 * Developing an ontology-like layer onto yt
-
-*Image layer: have out yt house, but with a blue line going along the floor. Or, have the foundation/floor as bar, and several ‘houses’ over top. These could also be the icons:*
 
 ---
 
@@ -298,15 +294,11 @@ We want to create a flexible, context-aware platform for natural science inquiry
 
 * Defining yt objects (building blocks/foundation), relationships between objects, and rules for those objects and relationships specific to a physical science domain
 
-*Maybe we should use a domain example here? So from the image in the last slide just have one house being ‘built’*
-
 ---
 
 ## Software Renovation
 
 * An organized, mature mental model can now be expanded on and applied to other domains
-
-*Use the multi-house image, but with people or happy faces adding to domain specific homes and adding new domains*
 
 ---
 
