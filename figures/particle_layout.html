@@ -21,8 +21,8 @@
         const Nrow = 25;
         const blockSize = 32;
 
-        const particleHighlights = [726, 509, 309, 855, 408, 472,  10,  12,
-            712, 664,  74, 764, 473, 380,  57,  39];
+        const particleHighlights = [ 2, 125, 72, 63, 151, 244, 211, 57, 121,
+            187, 245, 18];
 
         var diskColorBW = d3.scaleSequentialLog(d3.interpolateGreys);
         var diskColor = d3.scaleSequentialLog(d3.interpolateViridis);
@@ -52,7 +52,6 @@
             var scaleR = d3.scaleLog()
                             .domain(densityRangeClip)
                             .range([8, 12]);
-            console.log(densityRangeClip, densityRange)
             data.forEach( (d, flatIndex) => {
                 d.radii = scaleR(d.density);
                 d.rectPath = d3.rect({
@@ -84,7 +83,6 @@
                 .data(data)
                 .enter()
                 .append("path");
-
             return data;
         })
 
@@ -137,7 +135,7 @@
                             .attr("x2", d => imageX(data[d].particle_position_x))
                             .attr("y1", imageY(data[i].particle_position_y))
                             .attr("y2", d => imageY(data[d].particle_position_y));
-                        return d3.transition().duration(3000).end();
+                        return d3.transition().duration(1000).end();
                     });
                 });
             });
