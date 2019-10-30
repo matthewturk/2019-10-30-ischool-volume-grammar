@@ -40,6 +40,7 @@
         const Nrow = 125;
 
         function drawDisk(data) {
+            totalRows = Math.ceil(data.projection.length / Nrow);
             svg.selectAll("rect")
                 .data(data.projection)
                 .enter()
@@ -49,7 +50,13 @@
                 .attr("height", 4)
                 .attr("width", 4)
                 .style("stroke", "none")
+                .style("fill-opacity", 0.0)
                 .style("fill", d => cellColorBW(d.density));
+            svg.selectAll("rect")
+                .data(data.projection)
+                .transition()
+                .delay((d, flatIndex) => (totalRows - Math.floor(flatIndex / Nrow)) * 25)
+                .style("fill-opacity", 1.0);
         }
 
         function transitionDiskToImage(data) {
